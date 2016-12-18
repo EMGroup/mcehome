@@ -110,6 +110,7 @@ See LICENSE.txt
 			background: white;
 			box-sizing: border-box;
 			padding: 5px;
+			cursor: pointer;
 		}
 
 		div.showcase-title {
@@ -223,7 +224,7 @@ $(document).ready(function() {
 				var p = data[i].path;
 				var e = data[i].versions.PublicLatest[0];
 				var meta = JSON.parse(e.title);
-				var entry = $('<div class="showcase-entry"></div>');
+				var entry = $('<div class="showcase-entry" data-path="'+p+"&tag="+e.saveID+'"></div>');
 				entry.append($('<img src="'+meta.thumb+'"></img>'));
 				entry.append($('<div>'+meta.title+'</div>'));
 				output.append(entry);
@@ -240,6 +241,10 @@ $(document).ready(function() {
 	});
 	$(document.body).on("click", ".tb-entry.browse", function() {
 		window.location.href="http://jseden.dcs.warwick.ac.uk/construit";
+	});
+	$(document.body).on("click", ".showcase-entry", function(e) {
+		var path = e.currentTarget.getAttribute("data-path");
+		window.location.href="http://jseden.dcs.warwick.ac.uk/construit/?load="+path;
 	});
 });
 </script>
@@ -258,9 +263,12 @@ $(document).ready(function() {
 </div>
 <div id="innercontent">
 <h1><span class="icon">&#xf02d;</span>Documentation</h1>
+<div class="env-entry"><span class="icon">&#xf0ca;</span><a href="https://github.com/EMGroup/js-eden/wiki/Script-View-Plugin">Using the Script window</a></div>
 <div class="env-entry"><span class="icon">&#xf0ca;</span><a href="https://github.com/EMGroup/js-eden/wiki/JS-Eden-Syntax-Reference">Language Reference</a></div>
 <div class="env-entry"><span class="icon">&#xf12e;</span><a href="construit/?import=examples">Live Examples</a></div>
+<div class="env-entry"><span class="icon">&#xf121;</span><a href="https://github.com/EMGroup/js-eden">Source Code</a></div>
 <div class="env-entry"><span class="icon">&#xf08e;</span><a href="http://www.construit.org">Contruit Project Website</a></div>
+<div class="env-entry"><span class="icon">&#xf08e;</span><a href="http://www2.warwick.ac.uk/fac/sci/dcs/research/em/construit/">Alternate Construit Site</a></div>
 <h1>The Environment</h1>
 <div class="env-entry stable">Stable</div>
 <div class="env-entry development">Development</div>
