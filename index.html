@@ -35,16 +35,18 @@ See LICENSE.txt
 		}
 
 		div#main-content {
-			width: 800px;
+			width: 1000px;
+			margin-top: 30px;
 			margin-left: auto;
 			margin-right: auto;
 		}
 
 		div#titlebar {
 			width: 100%;
-			background-color: #eee;
+			background-color: white;
 			height: 180px;
 			text-align: center;
+			border-bottom: 30px solid #585858;
 		}
 
 		div#construit-logo {
@@ -60,7 +62,7 @@ See LICENSE.txt
 		div#subtitle {
 			font-size: 22pt;
 			font-weight: bold;
-			color: #666;
+			color: #888;
 			font-family: Arial;
 		}
 
@@ -88,28 +90,80 @@ See LICENSE.txt
 
 		div#showcase {
 			float: right;
-			background: #eee;
-			border-bottom-left-radius: 10px;
-			border-bottom-right-radius: 10px;
-			padding: 10px;
+			background: #f9f9f9;
+			border: 1px solid #e5e5e5;
+			border-radius: 4px;
 			width: 200px;
 			min-height: 200px;
+			display: flex;
+			flex-direction: column;
+			padding: 5px;
 		}
 
 		div#trybox {
 			float: left;
-			height: 116px;
-			width: calc(100% - 220px);
-			border-top-left-radius: 10px;
-			border-bottom-left-radius: 10px;
-			border-top-right-radius: 10px;
-			background: #eee;
+			height: 120px;
+			background: #f9f9f9;
+			border: 1px solid #e5e5e5;
+			border-radius: 4px;
 			margin-bottom: 20px;
+			display: flex;
+			align-content: center;
+		}
+
+		div#innercontent {
+			background: white;
+			border: 1px solid #e5e5e5;
+			border-radius: 4px;
+			box-sizing: border-box;
+			padding: 10px;
+			padding-left: 30px;
+			flex-grow: 1;
 		}
 
 		div.project-entry {
 			width: 200px;
 			height: 116px;
+		}
+
+		div#flxvrt {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			margin-right: 20px;
+		}
+		div#flxhor {
+			display: flex;
+		}
+
+		div.tb-entry {
+			width: 200px;
+			text-align: center;
+			padding: 10px;
+			box-sizing: border-box;
+			flex-grow: 1;
+			font-family: Helvetica, Arial;
+			font-size: 18pt;
+			font-weight: bold;
+			border: 1px solid #e5e5e5;
+			margin: 8px;
+			border-radius: 4px;
+			background: white;
+			cursor: pointer;
+		}
+
+		div.tb-entry:hover {
+			border-color: #222;
+		}
+
+		span.tb-icon {
+			font-family: "FontAwesome";
+			font-size: 40pt;
+			color: #29454B;
+		}
+
+		span.tb-icon.go {
+			color: green;
 		}
 	</style>
 </head>
@@ -159,18 +213,26 @@ $(document).ready(function() {
 			//Eden.DB.disconnect(true);
 		}
 	});
+
+	$(document.body).click(".tb-entry.go", function() {
+		document.location.href="/construit";
+	});
 });
 </script>
 
 <div id="titlebar">
 	<div id="construit-logo"></div>
-	<div id="subtitle">The Making Construals Environment</div>
+	<div id="subtitle">Making Construals Environment</div>
 </div>
 <div id="main-content">
+<div id="flxhor">
+<div id="flxvrt">
 <div id="trybox">
-	<button>Try!</button>
+	<div class="tb-entry go"><span class="tb-icon go">&#xf040;</span><br/>Go!</div>
+	<div class="tb-entry browse"><span class="tb-icon browse">&#xf002;</span><br/>Browse</div>
+	<div class="tb-entry demo"><span class="tb-icon demo">&#xf04b;</span><br/>Demo</div>
 </div>
-<div id="showcase"></div>
+<div id="innercontent">
 <h1><span class="icon">&#xf02d;</span>Documentation</h1>
 <div class="env-entry"><span class="icon">&#xf0ca;</span><a href="https://github.com/EMGroup/js-eden/wiki/JS-Eden-Syntax-Reference">Language Reference</a></div>
 <div class="env-entry"><span class="icon">&#xf12e;</span><a href="construit/?import=examples">Live Examples</a></div>
@@ -191,6 +253,10 @@ $(document).ready(function() {
 <div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.c1">Construit C1</a> - v0.4.1-174 - (10th December 2014)</div>
 <div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.old">Construit Old</a> (11th September 2014)</div>
 <div class="env-entry"><span class="icon">&#xf187;</span><a href="emile">Emile</a> (20th November 2013)</div>
+</div>
+</div>
+<div id="showcase"></div>
+</div>
 </div>
 
 </body>
