@@ -93,11 +93,31 @@ See LICENSE.txt
 			background: #f9f9f9;
 			border: 1px solid #e5e5e5;
 			border-radius: 4px;
-			width: 200px;
+			width: 250px;
 			min-height: 200px;
 			display: flex;
 			flex-direction: column;
+			padding: 10px;
+		}
+
+		div.showcase-entry {
+			text-align: center;
+			font-size: 10pt;
+			color: #666;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			border: 1px solid #e5e5e5;
+			background: white;
+			box-sizing: border-box;
 			padding: 5px;
+		}
+
+		div.showcase-title {
+			color: #666;
+			font-family: Helvetica, Arial;
+			margin-bottom: 20px;
+			font-size: 14pt;
+			font-weight: bold;
 		}
 
 		div#trybox {
@@ -195,7 +215,7 @@ $(document).ready(function() {
 			withCredentials: true
 		},
 		success: function(data){
-			console.log(data);
+			//console.log(data);
 			var output = $("#showcase");
 			var count = (data.length > 9) ? 9 : data.length;
 
@@ -205,6 +225,7 @@ $(document).ready(function() {
 				var meta = JSON.parse(e.title);
 				var entry = $('<div class="showcase-entry"></div>');
 				entry.append($('<img src="'+meta.thumb+'"></img>'));
+				entry.append($('<div>'+meta.title+'</div>'));
 				output.append(entry);
 			}
 		},
@@ -214,11 +235,11 @@ $(document).ready(function() {
 		}
 	});
 
-	$(document.body).click(".tb-entry.go", function() {
-		document.location.href="/construit/?load=jseden1/NicolasPope/NewProject&tag=4470";
+	$(document.body).on("click", ".tb-entry.go", function() {
+		window.location.href="http://jseden.dcs.warwick.ac.uk/construit/index.html?load=jseden1/NicolasPope/NewProject&tag=4470";
 	});
-	$(document.body).click(".tb-entry.browse", function() {
-		document.location.href="/construit";
+	$(document.body).on("click", ".tb-entry.browse", function() {
+		window.location.href="http://jseden.dcs.warwick.ac.uk/construit";
 	});
 });
 </script>
@@ -258,7 +279,7 @@ $(document).ready(function() {
 <div class="env-entry"><span class="icon">&#xf187;</span><a href="emile">Emile</a> (20th November 2013)</div>
 </div>
 </div>
-<div id="showcase"></div>
+<div id="showcase"><div class="showcase-title">Showcase</div></div>
 </div>
 </div>
 
