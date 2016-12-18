@@ -1,0 +1,144 @@
+<!doctype html>
+<!--
+Copyright (c) 2013, Empirical Modelling Group
+All rights reserved.
+
+See LICENSE.txt
+-->
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=0.9">
+	<title>Construit!</title>
+	<script type="text/javascript" src="latest-master/js/lib/jquery-1.8.3.min.js"></script>
+
+	<style type="text/css">
+		@font-face {
+			font-family: "FontAwesome";
+			src: url("latest-master/fonts/fontawesome-webfont.eot");
+			src:	url("latest-master/fonts/fontawesome-webfont.eot?#iefix") format('eot'),
+					url("latest-master/fonts/fontawesome-webfont.woff") format('woff'),
+					url("latest-master/fonts/fontawesome-webfont.ttf") format('truetype'),
+					url("latest-master/fonts/fontawesome-webfont.svg#FontAwesome") format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		body {
+			padding: 0;
+			margin: 0;
+		}
+
+		h1 {
+			color: #666;
+			font-family: Helvetica, Arial;
+		}
+
+		div#main-content {
+			width: 800px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		div#titlebar {
+			width: 100%;
+			background-color: #eee;
+			height: 180px;
+			text-align: center;
+		}
+
+		div#construit-logo {
+			width: 450px;
+			margin-left: auto;
+			margin-right: auto;
+			background-image: url('latest-master/images/construit_logo_2.png');
+			background-repeat: no-repeat;
+			background-position: center top;
+			height: 120px;
+		}
+
+		div#subtitle {
+			font-size: 22pt;
+			font-weight: bold;
+			color: #666;
+			font-family: Arial;
+		}
+
+		span.icon {
+			font-family: "FontAwesome";
+			margin-right: 10px;
+		}
+
+		div.env-entry {
+			padding-left: 20px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			margin: 5px;
+			font-size: 12pt;
+			background: white;
+			cursor: pointer;
+			color: #222;
+		}
+
+		div.env-entry:hover {
+			background: #eee;
+			color: black;
+			text-shadow: 0 0 8px #666;
+		}
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$.ajax({
+		url: "construit/version.json",
+		dataType: "json",
+		success: function (data) {
+			$(".stable").html("<span class=\"icon\">&#xf00c;</span><a href=\"construit\">Stable</a> - "+data.tag);
+		},
+		cache: false
+	});
+	$.ajax({
+		url: "latest-master/version.json",
+		dataType: "json",
+		success: function (data) {
+			$(".development").html("<span class=\"icon\">&#xf0ad;</span><a href=\"latest-master\">Development</a> - "+data.tag);
+		},
+		cache: false
+	});
+});
+</script>
+
+<div id="titlebar">
+	<div id="construit-logo"></div>
+	<div id="subtitle">The Making Construals Environment</div>
+</div>
+<div id="main-content">
+<div id="trybox">
+	<button>Try!</button>
+</div>
+<h1><span class="icon">&#xf02d;</span>Documentation</h1>
+<div class="env-entry"><span class="icon">&#xf0ca;</span><a href="https://github.com/EMGroup/js-eden/wiki/JS-Eden-Syntax-Reference">Language Reference</a></div>
+<div class="env-entry"><span class="icon">&#xf12e;</span><a href="construit/?import=examples">Live Examples</a></div>
+<div class="env-entry"><span class="icon">&#xf08e;</span><a href="http://www.construit.org">Contruit Project Website</a></div>
+<h1>The Environment</h1>
+<div class="env-entry stable">Stable</div>
+<div class="env-entry development">Development</div>
+<h1>Older Versions</h1>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.c7">Construit C7</a> - v1.3.1-34 - (11th December 2016)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="scifest16">Scifest16</a> - v1.2.2-100 - (17th June 2026)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.c15">Construit C15</a> - v1.2.2-30 - (13th April 2016)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.c6">Construit C6</a> - v1.1.0-3 - (1st February 2016)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="itag">ITAG</a> (22nd October 2015)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.s9">Construit S9</a> (21st September 2015)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="scifest">Scifest</a> - v0.4.1-659 - (2nd May 2015)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.c5">Construit C5</a> (23rd April 2015)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.7Feb15">Construit 7Feb15</a> (7th February 2015)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.c1">Construit C1</a> - v0.4.1-174 - (10th December 2014)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="construit.old">Construit Old</a> (11th September 2014)</div>
+<div class="env-entry"><span class="icon">&#xf187;</span><a href="emile">Emile</a> (20th November 2013)</div>
+</div>
+
+</body>
+</html>
